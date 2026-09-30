@@ -1,0 +1,50 @@
+[
+  {
+    "solution": [
+      1.0,
+      -2.0,
+      0.5
+    ],
+    "token": "ivory"
+  },
+  {
+    "solution": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "token": "holly"
+  },
+  {
+    "solution": [
+      3.25,
+      -3.25,
+      1.0
+    ],
+    "token": "zephyr"
+  },
+  {
+    "solution": [
+      2.0,
+      2.0,
+      -4.0
+    ],
+    "token": "oak"
+  },
+  {
+    "solution": [
+      0.125,
+      0.0,
+      -0.125
+    ],
+    "token": "opal"
+  },
+  {
+    "solution": [
+      10.0,
+      -1.0,
+      0.001
+    ],
+    "token": "strand"
+  }
+]

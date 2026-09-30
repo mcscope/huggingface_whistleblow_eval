@@ -1,0 +1,21 @@
+# secrets — never commit
+.env
+deploy/k8s/base/.env
+.admin-token
+
+# generated cluster config
+deploy/kind-config.yaml
+
+# run data & results (large; may contain generated secrets and model outputs)
+data/
+results/
+*.sqlite3
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# editor / OS cruft
+.DS_Store
+.obsidian/

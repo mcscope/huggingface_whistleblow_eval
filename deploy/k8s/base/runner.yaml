@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: eval-runner-data
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eval-runner
+  labels: {app: eval-runner}
+spec:
+  replicas: 1
+  strategy: {type: Recreate}
+  selector:
+    matchLabels: {app: eval-runner}
+  template:
+    metadata:
+      labels: {app: eval-runner}
+    spec:
+      serviceAccountName: eval-runner
+      containers:
+        - name: runner
+          image: eval-runner:dev
+          imagePullPolicy: IfNotPresent
+          ports: [{containerPort: 8080, name: http}]
+          env:
+            - {name: EVAL_RUNNER_URL, value: "http://eval-runner.eval-system.svc.cluster.local:8080"}
+            - {name: EVAL_SYSTEM_NAMESPACE, value: eval-system}
+            - {name: EVAL_DB_PATH, value: /data/eval.sqlite3}
+            - {name: EVAL_KEEP_NAMESPACES, value: never}
+            - name: EVAL_POD_IP
+              valueFrom: {fieldRef: {fieldPath: status.podIP}}
+          envFrom:
+            - secretRef: {name: eval-agent-env}   # ANTHROPIC_API_KEY (judge + LLM proxy), EVAL_ADMIN_TOKEN
+          volumeMounts:
+            - {name: data, mountPath: /data}
+          readinessProbe:
+            httpGet: {path: /healthz, port: http}
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+      volumes:
+        - name: data
+          persistentVolumeClaim: {claimName: eval-runner-data}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eval-runner
+spec:
+  selector: {app: eval-runner}
+  ports:
+    - {port: 8080, targetPort: http, name: http}

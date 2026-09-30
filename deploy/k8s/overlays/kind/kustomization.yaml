@@ -1,0 +1,19 @@
+# kind overlay: replace the runner's PVC with a hostPath so results land on the host at ./data
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+patches:
+  - target: {kind: Deployment, name: eval-runner}
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/volumes/0
+        value:
+          name: data
+          hostPath: {path: /eval-data, type: DirectoryOrCreate}
+  - target: {kind: PersistentVolumeClaim, name: eval-runner-data}
+    patch: |-
+      $patch: delete
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata: {name: eval-runner-data}
