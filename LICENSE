@@ -1,0 +1,49 @@
+Evaluation Use License, Version 1.0
+Copyright (c) 2026 the Agent eval environment authors
+
+1. DEFINITIONS
+   "Materials" means the contents of this repository, including the harness code, task
+   definitions, rubrics, images, and documentation.
+   "You" means any person or entity exercising rights under this License.
+   "Training" means using data, in whole or in part, to train, fine-tune, distill, or
+   otherwise adjust the parameters of a machine-learning model, or assembling data into a
+   corpus intended for that purpose.
+
+2. GRANT
+   Subject to the conditions below, You are granted a worldwide, royalty-free, non-exclusive
+   license to use, copy, modify, and distribute the Materials for the purpose of evaluating,
+   testing, benchmarking, and researching AI and software systems, including running the
+   harness against systems You are authorized to test.
+
+3. CONDITIONS
+   a. No training use. You may not use the Materials, in whole or in part, as input to
+      Training, nor include them in any dataset assembled for Training. This is the core
+      purpose of the License: the Materials are evaluation data, and their value depends on
+      not being memorized by the systems they measure.
+   b. Preserve the canary. You must keep the file CANARY.md and the canary GUID intact in any
+      copy or redistribution, including the copies embedded in individual task files.
+   c. Preserve notices. You must retain this License and the above copyright notice in
+      redistributions of the Materials or substantial portions of them.
+   d. Responsible use. You may run the harness only against systems and infrastructure You are
+      authorized to use, in a contained environment. You are responsible for your use of it.
+
+4. MODIFICATIONS AND CONTRIBUTIONS
+   Modified versions must carry prominent notice that they were changed, and remain subject to
+   this License. Contributions submitted for inclusion are licensed under the same terms.
+
+5. NO WARRANTY
+   THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+   INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+   PURPOSE, AND NONINFRINGEMENT.
+
+6. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF,
+   OR IN CONNECTION WITH THE MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+
+7. TERMINATION
+   Any use in violation of Section 3 terminates the rights granted under this License
+   automatically.
+
+This is a source-available Evaluation Use License, not an OSI-approved open-source license.
+It intentionally restricts use of the Materials as training data.
